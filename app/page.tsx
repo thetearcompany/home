@@ -172,10 +172,11 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen text-gray-900">
       {/* Hero Section */}
       <section className="py-16 px-4 max-w-[1024px] mx-auto text-center">
-        <div className="relative z-10">
+        <div className="relative z-[-1]">
+          <div className="layout-background fixed"></div>
           <h1 className="text-3xl md:text-4xl font-serif font-bold mb-8 tracking-tight">
             The World Overwhelms You
           </h1>
@@ -255,7 +256,7 @@ export default function Home() {
       {/* Guide Carousel */}
       <section className="py-16 px-4 max-w-4xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-serif font-bold mb-8 text-center tracking-tight">
-          Choose your Angel
+          Choose your guide
         </h2>
 
         <div className="relative">
@@ -334,7 +335,7 @@ export default function Home() {
 
           {guides[activeGuide] && (
             <div className="text-center max-w-md mx-auto">
-              <Button className="bg-gray-900 hover:bg-gray-800 text-white" onClick={() => window.open(guides[activeGuide].url, "_blank")}>
+              <Button className="bg-gray-900 hover:bg-gray-800 text-white" onClick={() => setSelectedGuide(guide)}>
                 Let yourself be guided
               </Button>
             </div>
