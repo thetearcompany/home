@@ -579,29 +579,25 @@ export default function Home() {
         <div className="flex gap-2 items-center justify-center">
           <Popover>
             <PopoverTrigger asChild>
-              <Mail className="w-[23rem] h-[23rem]" /> 
+              <Mail /> 
             </PopoverTrigger>
             <PopoverContent className="w-80 text-center text-indigo-600 text-7xl">
               <pre>
-              כמע
-בקכ
-למת
-
-כמת
-פמד
-כתא
-
-אעו
-וכי
-בוי
-
-אלפ
-רלק
-סתו
+                כמע
+                בקכ
+                למת
+                כמת
+                פמד
+                כתא
+                אעו
+                וכי
+                בוי
+                אלפ
+                רלק
+                סתו
               </pre>
             </PopoverContent>
           </Popover>
-          <Mail className="w-[23rem] h-[23rem]" /> 
           <Link href="mailto">divines@duck.com</Link>
          </div>
 
