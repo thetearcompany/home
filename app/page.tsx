@@ -93,22 +93,32 @@ const guides = [
     problems: ["Spiritual emptiness", "Disconnection", "Existential crisis"],
     url: "https://chatgpt.com/g/g-67cbc5e8b3ac8191bb63490cd0d3dcac-yabomayah"
   },
-  // {
-  //   id: "samael",
-  //   name: "SAMAEL",
-  //   image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SAMAEL-yt081JVkYUoYZiZiMUOJ6Aqn1qxoBQ.png",
-  //   attributes: ["Justice", "Courage", "Strength"],
-  //   problems: ["Injustice", "Fear", "Weakness"],
-  //   url: "https://chatgpt.com/g/g-67cbf39e44c88191962ad5985f177da3-samael"
-  // },
-  // {
-  //   id: "mihal",
-  //   name: "MIHAL",
-  //   image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MIHAL-yt081JVkYUoYZiZiMUOJ6Aqn1qxoBQ.png",
-  //   attributes: ["Love", "Relationships", "Peace"],
-  //   problems: ["Loneliness", "Heartbreak", "Conflict"],
-  //   url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-saitel"
-  // },
+  {
+    id: "samael",
+    name: "SAMAEL",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SAMAEL-yt081JVkYUoYZiZiMUOJ6Aqn1qxoBQ.png",
+    attributes: ["Justice", "Courage", "Strength"],
+    problems: ["Injustice", "Fear", "Weakness"],
+    url: "https://chatgpt.com/g/g-67cbf39e44c88191962ad5985f177da3-samael"
+  },
+  {
+    id: "mihal",
+    name: "MIHAL",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MIHAL-yt081JVkYUoYZiZiMUOJ6Aqn1qxoBQ.png",
+    attributes: ["Love", "Relationships", "Peace"],
+    problems: ["Loneliness", "Heartbreak", "Conflict"],
+    url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-saitel"
+  },
+  {
+    id: 'elemiah',
+    name: 'ELEMIAH',
+    url: 'https://chatgpt.com/g/g-67cdb0ece5d481918047a1b387390f73-elemiah'
+  },
+  {
+    id: 'vehaviah',
+    name: 'VEHAVIAH',
+    url: 'https://chatgpt.com/g/g-67cdb3c1c63c81919da83efa8c01c7dc-vehaviah'
+  }
 ]
 
 // Problem categories
@@ -177,7 +187,15 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pb-16 px-4 max-w-[1024px] mx-auto text-center">
         <div className="relative mt-16">
-          <Image src="/divines.png" alt="Hero" width={320} height={320} className="mx-auto" />
+            <Link href="https://discord.gg/fyTxvQsX" passHref>
+              <Image 
+              src="/divines.png" 
+              alt="Hero" 
+              width={320} 
+              height={320} 
+              className="inline-block size-72 rounded-full ring-2 mx-auto animate-pulse shadow-amber-600/50" 
+              />
+            </Link>
           <h1 className="text-3xl md:text-4xl font-serif font-bold my-8 tracking-tight">
             The World Overwhelms You
           </h1>
