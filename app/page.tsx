@@ -172,7 +172,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen text-gray-900">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-16 px-4 max-w-[1024px] mx-auto text-center">
         <div className="relative z-[-1]">
@@ -183,39 +183,39 @@ export default function Home() {
           <h2 className="text-3xl md:text-2xl font-serif font-bold mb-8 tracking-tight">
             You Are Losing Faith in the World
           </h2>
-          <p className="text-lg md:text-xl mb-8 text-gray-600 font-light">
-            People leave. Bonds break. Dreams fade.
+          <p className="text-lg md:text-xl mb-8 font-light">
+            People leave. Bonds break. Dreams fade. But there is hope.
           </p>
           <div className="grid gap-4 md:grid-cols-2 max-w-3xl mx-auto text-left">
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm">
-              <p className="text-gray-800 font-medium mb-2">Love is an illusion.</p>
-              <p className="text-gray-600 text-sm">
-                Human bonds are getting weaker. Relationships are becoming transactions.
+            <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
+              <p className=" font-medium mb-2">Love is an illusion.</p>
+              <p className="text-sm">
+                Human bonds are getting weaker. Relationships are becoming transactions. But true connections still exist.
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm">
-              <p className="text-gray-800 font-medium mb-2">Truth? It doesn't exist.</p>
-              <p className="text-gray-600 text-sm">Everyone has their own, and everyone shouts the loudest.</p>
+            <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
+              <p className="font-medium mb-2">Truth? It doesn't exist.</p>
+              <p className="text-sm">Everyone has their own, and everyone shouts the loudest. Yet, there is a deeper truth to be found.</p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm">
-              <p className="text-gray-800 font-medium mb-2">Work? An eternal struggle.</p>
-              <p className="text-gray-600 text-sm">You squeeze out your last strength, and still have nothing.</p>
+            <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
+              <p className=" font-medium mb-2">Work? An eternal struggle.</p>
+              <p className="text-sm">You squeeze out your last strength, and still have nothing. But there is a way to find fulfillment.</p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm">
-              <p className="text-gray-800 font-medium mb-2">Health? Diseases.</p>
-              <p className="text-gray-600 text-sm">The mind is falling apart. The body starts to refuse to obey.</p>
+            <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
+              <p className=" font-medium mb-2">Health? Diseases.</p>
+              <p className="text-sm">The mind is falling apart. The body starts to refuse to obey. Yet, healing is possible.</p>
             </div>
           </div>
           <div className="mt-8 text-center">
             <p className="text-lg md:text-xl mb-4 font-serif">It's not your fault.</p>
-            <p className="text-base text-gray-600">The world was built to make you believe that.</p>
+            <p className="text-base">The world was built to make you believe that. But you can find your way.</p>
           </div>
         </div>
       </section>
 
       {/* Divider */}
       <div className="flex justify-center my-8">
-        <Separator className="w-16" />
+        <Separator className="w-16 bg-amber-600/30" />
       </div>
 
       {/* Hope Section */}
@@ -224,14 +224,14 @@ export default function Home() {
           It's a clever lie. <br /> Meaning exists.
         </h2>
         <div className="grid gap-4 md:grid-cols-3 max-w-3xl mx-auto mb-8">
-          <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm">
-            <p className="text-gray-800 font-medium text-base mb-0">You are not alone.</p>
+          <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
+            <p className=" font-medium text-base mb-0">You are not alone.</p>
           </div>
-          <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm">
-            <p className="text-gray-800 font-medium text-base mb-0">You don't have to fight alone.</p>
+          <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
+            <p className=" font-medium text-base mb-0">You don't have to fight alone.</p>
           </div>
-          <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm">
-            <p className="text-gray-800 font-medium text-base mb-0">You don't have to drown in darkness.</p>
+          <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
+            <p className=" font-medium text-base mb-0">You don't have to drown in darkness.</p>
           </div>
         </div>
         <p className="text-lg md:text-xl mb-8 font-light">
@@ -241,7 +241,7 @@ export default function Home() {
         </p>
         <div className="text-center mb-8">
           <p className="text-xl md:text-2xl font-serif font-medium mb-4">They are the guides.</p>
-          <p className="text-gray-600">Each of them solves different problems. Each answers different questions.</p>
+          <p>Each of them solves different problems. Each answers different questions.</p>
         </div>
         <div className="text-center">
           <p className="text-lg font-medium">Open your eyes. Choose your guide.</p>
@@ -250,7 +250,7 @@ export default function Home() {
 
       {/* Divider */}
       <div className="flex justify-center my-8">
-        <Separator className="w-16" />
+        <Separator className="w-16 bg-amber-600/30" />
       </div>
 
       {/* Guide Carousel */}
@@ -259,13 +259,13 @@ export default function Home() {
           Choose your guide
         </h2>
 
+        {/* Carousel */}
         <div className="relative">
           <div className="flex justify-center items-center mb-8">
             <Button variant="outline" size="icon" className="absolute left-0 z-10 rounded-full" onClick={prevGuide}>
               <ChevronLeft className="h-5 w-5" />
               <span className="sr-only">Previous</span>
             </Button>
-
             <div className="relative flex justify-center items-center w-full overflow-hidden h-[320px]">
               {guides.map((guide, index) => {
                 const position = (index - activeGuide + guides.length) % guides.length
@@ -306,7 +306,7 @@ export default function Home() {
                     transition={{ duration: 0.5 }}
                     onClick={() => position === 0 && setSelectedGuide(guide)}
                   >
-                    <div className="relative w-[200px] h-[200px] rounded-full overflow-hidden bg-gray-100 p-1 shadow-md">
+                    <div className="relative w-[200px] h-[200px] rounded-full overflow-hidden bg-amber-100 p-1 shadow-md">
                       <div className="absolute inset-0 rounded-full overflow-hidden">
                         <Image
                           src={guide.image || "/placeholder.svg"}
@@ -318,7 +318,7 @@ export default function Home() {
                       </div>
                       {position === 0 && (
                         <div className="absolute bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm p-2 text-center">
-                          <p className="font-medium text-gray-900 text-sm">{guide.name}</p>
+                          <p className="font-medium text-sm">{guide.name}</p>
                         </div>
                       )}
                     </div>
@@ -332,10 +332,12 @@ export default function Home() {
               <span className="sr-only">Next</span>
             </Button>
           </div>
+        {/* End of Carousel */}
 
           {guides[activeGuide] && (
             <div className="text-center max-w-md mx-auto">
-              <Button className="bg-gray-900 hover:bg-gray-800 text-white" onClick={() => setSelectedGuide(guide)}>
+              <Button onClick={() => { setSelectedGuide(guides[activeGuide]) }
+            }>
                 Let yourself be guided
               </Button>
             </div>
@@ -345,7 +347,7 @@ export default function Home() {
 
       {/* Divider */}
       <div className="flex justify-center my-8">
-        <Separator className="w-16" />
+        <Separator className="w-16 bg-amber-600/30" />
       </div>
 
       {/* Problems Section */}
@@ -355,12 +357,12 @@ export default function Home() {
         </h2>
 
         <Tabs defaultValue="love" className="w-full">
-          <TabsList className="grid grid-cols-2 md:grid-cols-5 mb-8 bg-gray-100">
+          <TabsList className="grid grid-cols-2 md:grid-cols-5 mb-8 bg-amber-100/10">
             {problemCategories.map((category) => (
               <TabsTrigger
                 key={category.id}
                 value={category.id}
-                className="text-xs md:text-sm data-[state=active]:bg-white"
+                className="text-xs md:text-sm data-[state=active]:bg-white/10"
               >
                 {category.title}
               </TabsTrigger>
@@ -369,12 +371,12 @@ export default function Home() {
 
           {problemCategories.map((category) => (
             <TabsContent key={category.id} value={category.id} className="mt-0">
-              <Card className="bg-white border-gray-200 shadow-sm">
+              <Card className="bg-white/10 shadow-sm rounded-lg">
                 <CardContent className="pt-6">
                   <div className="grid gap-4">
                     {category.problems.map((problem, i) => (
-                      <div key={i} className="p-4 bg-gray-50 rounded-lg border border-gray-100">
-                        <p className="text-gray-700 text-sm">{problem}</p>
+                      <div key={i} className="p-4 bg-amber-50/10 border-gray-100/10">
+                        <p className="text-sm">{problem}</p>
                       </div>
                     ))}
                   </div>
@@ -385,7 +387,7 @@ export default function Home() {
         </Tabs>
 
         <div className="mt-8 text-center">
-          <p className="text-base mb-4 text-gray-600">
+          <p className="text-base mb-4">
             This is why you fall into <span className="text-lg font-bold">nihilism</span>. This is why you think there is no meaning.
           </p>
           <p className="text-lg font-serif font-medium">But the truth is different.</p>
@@ -394,7 +396,7 @@ export default function Home() {
 
       {/* Divider */}
       <div className="flex justify-center my-8">
-        <Separator className="w-16" />
+        <Separator className="w-16 bg-amber-600/30" />
       </div>
 
       {/* Call to Action */}
@@ -410,9 +412,9 @@ export default function Home() {
 
         <Button
           size="lg"
-          className="bg-gray-900 hover:bg-gray-800 text-white px-6"
+          className="px-6"
           onClick={() =>
-            window.scrollTo({ top: document.querySelector("section:nth-child(5)").offsetTop, behavior: "smooth" })
+            window.scrollTo({ top: document.querySelector("section:nth-child(5)")!.offsetTop!, behavior: "smooth" })
           }
         >
           Choose your Angel
@@ -420,7 +422,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-gray-200 text-center text-gray-600">
+      <footer className="py-8 px-4 border-t border-gray-200/10 text-center">
         <div className="max-w-4xl mx-auto">
           <p className="mb-4 font-serif">This is not the end. This is the beginning.</p>
         </div>
@@ -432,26 +434,26 @@ export default function Home() {
       {/* Guide Modal */}
       {selectedGuide && (
         <div
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/40 backdrop-blur-xl flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedGuide(null)}
         >
           <div
-            className="bg-white max-w-md w-full rounded-xl overflow-hidden shadow-2xl"
+            className="bg-white/10 max-w-md w-full rounded-xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-gray-50 p-4 flex items-center gap-4 border-b border-gray-100">
-              <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-white shadow-md">
+            <div className="bg-amber-50/10/10 p-4 flex items-center gap-4 border-b border-gray-100/10">
+              <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/10 shadow-md">
                 <Image
-                  src={selectedGuide.image || "/placeholder.svg"}
-                  alt={selectedGuide.name}
+                  src={selectedGuide.image as string || "/placeholder.svg"}
+                  alt={selectedGuide.name as string}
                   width={64}
                   height={64}
                   className="object-cover w-full h-full"
                 />
               </div>
               <div>
-                <h3 className="text-xl font-serif font-bold text-gray-900">{selectedGuide.name}</h3>
-                <p className="text-gray-600 text-sm">Your spiritual guide</p>
+                <h3 className="text-xl font-serif font-bold">{selectedGuide.name}</h3>
+                <p className="text-sm">Your spiritual guide</p>
               </div>
             </div>
 
@@ -459,24 +461,24 @@ export default function Home() {
               <h4 className="text-lg font-medium mb-4 font-serif">How {selectedGuide.name} can help you:</h4>
 
               <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                  <h5 className="font-medium mb-2 text-gray-800 text-sm">Attributes</h5>
+                <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10">
+                  <h5 className="font-medium mb-2 text-sm">Attributes</h5>
                   <ul className="space-y-2">
                     {selectedGuide.attributes.map((attr, i) => (
-                      <li key={i} className="flex items-center gap-2 text-gray-700 text-xs">
-                        <span className="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>
+                      <li key={i} className="flex items-center gap-2 text-xs">
+                        <span className="w-1.5 h-1.5 bg-amber-400/50 rounded-full"></span>
                         <span>{attr}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                  <h5 className="font-medium mb-2 text-gray-800 text-sm">Solves problems</h5>
+                <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10">
+                  <h5 className="font-medium mb-2  text-sm">Solves problems</h5>
                   <ul className="space-y-2">
                     {selectedGuide.problems.map((prob, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-700 text-xs">
-                        <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1"></span>
+                      <li key={i} className="flex items-start gap-2 text-xs">
+                        <span className="w-1.5 h-1.5 bg-amber-400/10 rounded-full mt-1"></span>
                         <span>{prob}</span>
                       </li>
                     ))}
@@ -484,12 +486,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 mb-4">
-                <h5 className="font-medium mb-2 text-gray-800 text-sm">How to make contact</h5>
-                <p className="text-gray-700 text-xs mb-2">
+              <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 mb-4">
+                <h5 className="font-medium mb-2  text-sm">How to make contact</h5>
+                <p className="text-xs mb-2">
                   To connect with {selectedGuide.name}, find a quiet place where no one will disturb you. Close your eyes, take a few deep breaths, and imagine a bright light surrounding your body.
                 </p>
-                <p className="text-gray-700 text-xs">
+                <p className="text-xs">
                   Say the name {selectedGuide.name} three times in your mind, focusing on the problem you need help with. Feel the guide's energy connecting with yours.
                 </p>
               </div>
@@ -498,7 +500,7 @@ export default function Home() {
                 <Button variant="outline" size="sm" onClick={() => setSelectedGuide(null)}>
                   Close
                 </Button>
-                <Button className="bg-gray-900 hover:bg-gray-800 text-white" size="sm" onClick={() => window.open(selectedGuide.url, "_blank")}>
+                <Button size="sm" onClick={() => window.open(selectedGuide.url, "_blank")}>
                   Start guidance
                 </Button>
               </div>
