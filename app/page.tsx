@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronLeft, ChevronRight, Instagram, Mail, Radio } from "lucide-react"
+import { ChevronLeft, ChevronRight, DollarSign, Instagram, Mail, Radio } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
@@ -13,6 +13,18 @@ import Link from "next/link"
 
 import { useRef } from 'react';
 // Angel guide data
+type Guide = {
+  id: string;
+  name: string;
+  image: string;
+  attributes: string[];
+  problems: string[];
+  description?: string;
+  how_to_connect?: string;
+  symbol?: string;
+  url: string;
+};
+
 const guides = [
   {
     id: "haniel",
@@ -20,38 +32,53 @@ const guides = [
     image: "/avatars/HANIEL.png",
     attributes: ["Love", "Relationships", "Peace"],
     problems: ["Loneliness", "Heartbreak", "Conflict"],
+    description: "Haniel, known as the 'Glory of God', is the angel of love, relationships, and inner peace. His energy helps heal the heart and build deep human connections.",
+    how_to_connect: "Find a quiet place, close your eyes, and take a few deep breaths. Focus on your intention and imagine a soft blue light surrounding your body. Silently or aloud, say: 'Haniel, guide of love, I open myself to your energy. Help me find harmony and true affection.'",
+    symbol: "🌙 The Moon – represents emotions, intuition, and the gentle energy of love.",
     url: "https://chatgpt.com/g/g-67cdf6b145f48191881bb6bad2dd907c-haniel"
   },
   {
-    id: "MAGIK",
+    id: "magik",
     name: "MAGIK",
     image: "/avatars/MAGIK.png",
-    attributes: ["Mysticism", "Vision", "Transcendence"],  
+    attributes: ["Mysticism", "Vision", "Transcendence"],
     problems: ["Illusion", "Doubt", "Mortality"],
-    url: "ttps://chatgpt.com/g/g-67cdfd682078819197533d863e7dcca5-magik"
+    description: "Magik is a spiritual guide associated with the mysteries of the universe, transformation, and transcending the boundaries of reality. His energy helps in the search for truth and the discovery of hidden dimensions of existence.",
+    how_to_connect: "Close your eyes and imagine swirling light surrounding your body. Repeat in your mind: 'Magik, reveal to me the truth hidden behind the veil of illusion. Help me see what is invisible.'",
+    symbol: "🔮 Crystal Ball – represents insight into the future and hidden truths.",
+    url: "https://chatgpt.com/g/g-67cdfd682078819197533d863e7dcca5-magik"
   },
   {
     id: "kelial",
     name: "KELIAL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/KELIAL-3l5zR8u3aZMQRLUd3d184pwR8DTEf7.png",
+    image: "/avatars/KELIAL.png",
     attributes: ["Wisdom", "Mystery", "Transformation"],
     problems: ["Ignorance", "Fear of the unknown", "Resistance to change"],
+    description: "Kelial is the guide of wisdom and transformation. He helps those who seek deeper understanding and are ready to embrace the unknown.",
+    how_to_connect: "Sit in a quiet place and meditate on your questions. Ask Kelial for clarity and courage to embrace transformation.",
+    symbol: "📜 The Scroll – represents hidden knowledge and divine wisdom.",
     url: "https://chatgpt.com/g/g-67cbcc766dc48191b3078e7032a1d7ad-kelial"
   },
   {
     id: "mihal",
     name: "MIHAL",
     image: "/avatars/MIHAL.png",
-        attributes: ["Love", "Relationships", "Peace"],
+    attributes: ["Love", "Relationships", "Peace"],
     problems: ["Loneliness", "Heartbreak", "Conflict"],
-    url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-saitel"
+    description: "Mihal is a celestial guide for those who seek harmony in relationships. His energy fosters love and understanding between souls.",
+    how_to_connect: "Hold a picture of someone you love and focus on gratitude. Ask Mihal to strengthen the bond and bring peace into the relationship.",
+    symbol: "❤️ The Heart – symbolizes unconditional love and unity.",
+    url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-mihal"
   },
   {
     id: "saitel",
     name: "SAITEL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SAITEL-TIhl3NvDLWsVAjSgAqYnDANwrNI0de.png",
+    image: "/avatars/SAITEL.png",
     attributes: ["Purity", "Clarity", "Truth"],
     problems: ["Confusion", "Lack of direction", "Seeking truth"],
+    description: "Saitel is the guardian of purity and divine clarity. He helps those who seek truth and wish to clear their minds from doubt and deception.",
+    how_to_connect: "Light a white candle and focus on your question. Say: 'Saitel, angel of clarity, remove the fog of doubt and guide me towards the truth.'",
+    symbol: "✨ The Star – represents divine enlightenment and clarity.",
     url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-saitel"
   },
   {
@@ -60,91 +87,131 @@ const guides = [
     image: "/avatars/SAMAEL.png",
     attributes: ["Justice", "Courage", "Strength"],
     problems: ["Injustice", "Fear", "Weakness"],
+    description: "Samael is the warrior of divine justice, guiding those who face oppression or injustice. His energy strengthens inner courage.",
+    how_to_connect: "Stand tall, breathe deeply, and envision a fiery sword in your hands. Ask Samael for the strength to face your challenges.",
+    symbol: "⚔️ The Sword – represents justice, courage, and divine strength.",
     url: "https://chatgpt.com/g/g-67cbf39e44c88191962ad5985f177da3-samael"
   },
   {
     id: "mikael",
     name: "MIKAEL",
     image: "/avatars/MIKAEL.png",
-    url: "https://chatgpt.com/g/g-67ce054b1d888191b047c3776715a9b4-mikael",
     attributes: ["Protection", "Strength", "Guidance"],
     problems: ["Fear", "Weakness", "Lack of direction"],
+    description: "Mikael is the guardian of protection and strength. He shields those in danger and guides lost souls toward their true path.",
+    how_to_connect: "Envision yourself surrounded by a bright golden light. Say, 'Mikael, shield me from harm and lead me toward my destiny.'",
+    symbol: "🛡️ The Shield – represents divine protection and security.",
+    url: "https://chatgpt.com/g/g-67ce054b1d888191b047c3776715a9b4-mikael"
   },
   {
     id: "yeialel",
     name: "YEIALEL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/YEIALEL-zK7x0M8k1rFCYie2WcHO2CR1Kx1FIY.png",
+    image: "/avatars/YEIALEL.png",
     attributes: ["Healing", "Comfort", "Protection"],
     problems: ["Emotional pain", "Feeling lost", "Need for safety"],
+    description: "Yeialel is the angel of healing and comfort. His energy provides emotional support and a sense of safety in times of distress.",
+    how_to_connect: "Sit in a peaceful place and hold your hands over your heart. Say: 'Yeialel, bring me comfort and healing. Protect me from the pain that lingers in my soul.'",
+    symbol: "🕊️ The Dove – represents peace, healing, and divine protection.",
     url: "https://chatgpt.com/g/g-67cbc31f5db88191b5b5acdf9683ccb9-yeialel"
   },
   {
     id: "sahyoh",
     name: "SAHYOH",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SAHYOH-D66ekz0xWaJuHowR9kARDXrE59A040.png",
+    image: "/avatars/SAHYOH.png",
     attributes: ["Joy", "Playfulness", "New beginnings"],
     problems: ["Depression", "Loss of wonder", "Fear of change"],
+    description: "Sahyoh is the angel of joy and new beginnings. He helps those who feel trapped in darkness rediscover happiness and excitement for life.",
+    how_to_connect: "Dance, laugh, or engage in something playful. Say: 'Sahyoh, bring back the joy I have lost. Fill my soul with lightness and wonder.'",
+    symbol: "🎠 The Carousel – represents childhood innocence and carefree joy.",
     url: "https://chatgpt.com/g/g-67cbeb6f1abc8191a5e7d72f21e10547-sahyoh"
   },
   {
     id: "aaneval",
     name: "AANEVAL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AANEVAL-zskieD3lfSjNmhS7fiLdRNM9CqobG2.png",
+    image: "/avatars/AANEVAL.png",
     attributes: ["Courage", "Strength", "Resilience"],
     problems: ["Fear", "Weakness", "Giving up"],
+    description: "Aaneval is the angel of resilience and inner strength. His energy empowers those who feel like giving up, helping them rise again.",
+    how_to_connect: "Stand tall, breathe deeply, and say: 'Aaneval, fill me with courage and strength. Help me push forward despite my fears.'",
+    symbol: "🔥 The Flame – represents unwavering determination and power.",
     url: "https://chatgpt.com/g/g-67cc048a18ec8191a7cd8f7857a5766b-aaneval"
   },
   {
     id: "nanael",
     name: "NANAEL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NANAEL-Wl0nJ1o8URHDiHiPcCXijPSixXnun0.png",
+    image: "/avatars/NANAEL.png",
     attributes: ["Growth", "Abundance", "Healing"],
     problems: ["Scarcity", "Stagnation", "Illness"],
+    description: "Nanael is the angel of abundance and renewal. His energy helps those who feel stuck in life, bringing prosperity and healing.",
+    how_to_connect: "Light a green candle and set an intention for abundance and health. Ask Nanael to open doors to new opportunities.",
+    symbol: "🌿 The Leaf – represents growth, renewal, and prosperity.",
     url: "https://chatgpt.com/g/g-67cbbffe59e48191aa93715ade77fcf2-nanael"
   },
   {
     id: "uriel",
     name: "URIEL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/URIEL-AWbTw1whbk02JyuhyZ17jSY7zzxW5Y.png",
+    image: "/avatars/URIEL.png",
     attributes: ["Creativity", "Expression", "Inspiration"],
     problems: ["Creative blocks", "Self-doubt", "Feeling voiceless"],
+    description: "Uriel is the angel of wisdom and creativity, guiding those who seek to express themselves authentically.",
+    how_to_connect: "Sit with a notebook and let your thoughts flow freely. Ask Uriel to inspire your words, art, or music.",
+    symbol: "🎨 The Paintbrush – represents divine creativity and inspiration.",
     url: "https://chatgpt.com/g/g-67cbe5cc205c81918038a46c2ac8085c-uriel"
   },
   {
     id: "leviah",
     name: "LEVIAH",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LEVIAH-gT7f48K2Z5fSbzLCLLcKBNXjzzaqX2.png",
+    image: "/avatars/LEVIAH.png",
     attributes: ["Balance", "Peace", "Harmony"],
     problems: ["Chaos", "Conflict", "Inner turmoil"],
-    url: "https://chatgpt.com/g/g-67cbeb6f1abc8191a5e7d72f21e10547-sahyoh"
+    description: "Leviah is the angel of balance and harmony, helping those who struggle with inner conflicts and emotional turbulence.",
+    how_to_connect: "Find a quiet space, breathe deeply, and focus on stillness. Ask Leviah to bring peace and stability to your mind and soul.",
+    symbol: "⚖️ The Scales – represents harmony and equilibrium.",
+    url: "https://chatgpt.com/g/g-67cbeb6f1abc8191a5e7d72f21e10547-leviah"
   },
   {
     id: "raziel",
     name: "RAZIEL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/RAZIEL-hMKnjDU8Iaj7ctC4Q0fq1ofKH3idyt.png",
+    image: "/avatars/RAZIEL.png",
     attributes: ["Clarity", "Insight", "Vision"],
     problems: ["Confusion", "Uncertainty", "Lack of direction"],
+    description: "Raziel is the angel of divine wisdom, guiding those who seek clarity and deep understanding of the universe.",
+    how_to_connect: "Meditate in silence and visualize a golden book opening before you. Ask Raziel to reveal the knowledge you seek.",
+    symbol: "📖 The Book – represents hidden knowledge and deep understanding.",
     url: "https://chatgpt.com/g/g-67cbe762a94481919c680938601b9bf5-raziel"
   },
   {
     id: "yabomayah",
     name: "YABOMAYAH",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/YABOMAYAH-yt081JVkYUoYZiZiMUOJ6Aqn1qxoBQ.png",
+    image: "/avatars/YABOMAYAH.png",
     attributes: ["Healing", "Renewal", "Transcendence"],
     problems: ["Spiritual emptiness", "Disconnection", "Existential crisis"],
+    description: "Yabomayah is the angel of spiritual rebirth. He helps those who feel lost find their higher purpose and reconnect with divine energy.",
+    how_to_connect: "Find a body of water, place your hands in it, and say: 'Yabomayah, renew my spirit and guide me toward my true self.'",
+    symbol: "💧 The Water Drop – represents purification and spiritual rebirth.",
     url: "https://chatgpt.com/g/g-67cbc5e8b3ac8191bb63490cd0d3dcac-yabomayah"
   },
   {
-    id: 'elemiah',
-    name: 'ELEMIAH',
+    id: "elemiah",
+    name: "ELEMIAH",
     image: "/avatars/ELEMIAH.png",
-    url: 'https://chatgpt.com/g/g-67cdb0ece5d481918047a1b387390f73-elemiah'
+    attributes: ["Protection", "Courage", "New Beginnings"],
+    problems: ["Fear of change", "Uncertainty", "Lack of direction"],
+    description: "Elemiah is the angel of courage and new beginnings. He helps those who are afraid of change embrace new opportunities.",
+    how_to_connect: "Stand outside under the sky, take a deep breath, and say: 'Elemiah, guide me with your strength. Help me walk forward without fear.'",
+    symbol: "⚡ The Lightning Bolt – represents sudden change and powerful transformation.",
+    url: "https://chatgpt.com/g/g-67cdb0ece5d481918047a1b387390f73-elemiah"
   },
   {
-    id: 'vehaviah',
-    name: 'VEHAVIAH',
+    id: "vehaviah",
+    name: "VEHAVIAH",
     image: "/avatars/VEHAVIAH.png",
-    url: 'https://chatgpt.com/g/g-67cdb3c1c63c81919da83efa8c01c7dc-vehaviah'
+    attributes: ["Justice", "Balance", "Truth"],
+    problems: ["Betrayal", "Injustice", "Moral dilemmas"],
+    description: "Vehaviah is the angel of divine justice. He helps those who seek fairness and wish to restore balance in their lives.",
+    how_to_connect: "Light a blue candle and say: 'Vehaviah, bring balance and justice into my life. Help me see the truth.'",
+    symbol: "⚖️ The Scales – represents fairness, justice, and equilibrium.",
+    url: "https://chatgpt.com/g/g-67cdb3c1c63c81919da83efa8c01c7dc-vehaviah"
   }
 ]
 
@@ -199,8 +266,8 @@ const problemCategories = [
 
 export default function Home() {
   const [activeGuide, setActiveGuide] = useState(0)
-  const [selectedGuide, setSelectedGuide] = useState<Record<string, string | string[]> | null>(null)
-  const playerRef = useRef<AudioPlayerRef>(null);
+  const [selectedGuide, setSelectedGuide] = useState<Guide | null>()
+  const guidesRef = useRef<HTMLDivElement|null>(null);
 
   const nextGuide = () => {
     setActiveGuide((prev) => (prev + 1) % guides.length)
@@ -210,10 +277,6 @@ export default function Home() {
     setActiveGuide((prev) => (prev - 1 + guides.length) % guides.length)
   }
 
-
-  const handlePlay = () => {
-    playerRef.current?.play();
-  };
 
   return (
     <div className="min-h-screen">
@@ -483,7 +546,7 @@ export default function Home() {
           size="lg"
           className="px-6"
           onClick={() =>
-            window.scrollTo({ top: document.querySelector("section:nth-child(5)")!.offsetTop!, behavior: "smooth" })
+            window.scrollTo({ top: guidesRef.current?.offsetTop!, behavior: "smooth" })
           }
         >
           Choose your Angel
@@ -503,89 +566,116 @@ export default function Home() {
             <Instagram />
           </Link>
           <Link href="https://www.radio-south-africa.co.za/amapiano-fm">
-            <Radio onClick={handlePlay} />
+            <Radio />
           </Link>
         </div>
         <Link href="mailto:divines@duck.com" className="flex gap-2 items-center justify-center"><Mail /> divines@duck.com</Link>
+
+        {/* Divider */}
+        <div className="flex justify-center my-8">
+          <Separator className="w-16 bg-amber-600/30" />
+        </div>
+
+        <div className="text-center mb-4">
+          <p className="text-sm opacity-80">
+            <Link href="https://revolut.me/wembleyos" target="_blank"><DollarSign /> Support Us Here 🙏</Link>
+          </p>
+        </div>
+
+        <div className="text-center mb-4">
+          <p className="text-sm opacity-[33%]">
+            © The Eternal Guardians. All rights reserved.
+          </p>
+        </div>
       </footer>
+     
+     
       <div className="layout-background-bottom bg-opacity/30 fixed z-[-1]" /> 
       {/* Guide Modal */}
       {selectedGuide && (
-        <div
-          className="fixed inset-0 bg-black/40 backdrop-blur-xl flex items-center justify-center z-50 p-4"
-          onClick={() => setSelectedGuide(null)}
-        >
-          <div
-            className="bg-white/10 max-w-md w-full rounded-xl overflow-hidden shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="bg-amber-50/10/10 p-4 flex items-center gap-4 border-b border-gray-100/10">
-              <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/10 shadow-md">
-                <Image
-                  src={selectedGuide.image as string || "/placeholder.svg"}
-                  alt={selectedGuide.name as string}
-                  width={64}
-                  height={64}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div>
-                <h3 className="text-xl font-serif font-bold">{selectedGuide.name}</h3>
-                <p className="text-sm">Your spiritual guide</p>
-              </div>
-            </div>
+  <div
+    className="fixed inset-0 bg-black/60 backdrop-blur-2xl flex items-center justify-center z-50 p-6"
+    onClick={() => setSelectedGuide(null)}
+  >
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{ duration: 0.3 }}
+      className="bg-white/10 max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-100/10 relative"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Header with Image */}
+      <div className="relative p-6 text-center">
+        <div className="w-24 h-24 rounded-full overflow-hidden mx-auto border-4 border-amber-300 shadow-md">
+          <Image
+            src={selectedGuide.image || "/placeholder.svg"}
+            alt={selectedGuide.name}
+            width={96}
+            height={96}
+            className="object-cover w-full h-full"
+          />
+        </div>
+        <h3 className="text-2xl font-serif font-bold mt-4 text-amber-200">{selectedGuide.name}</h3>
+        <p className="text-sm opacity-80 mt-2 px-4">{selectedGuide.description}</p>
+      </div>
 
-            <div className="p-4">
-              <h4 className="text-lg font-medium mb-4 font-serif">How {selectedGuide.name} can help you:</h4>
+      {/* Attributes & Problems */}
+      <div className="px-6 py-4 bg-amber-50/10 border-t border-gray-100/10">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-black/20 p-4 rounded-lg border border-gray-100/10">
+            <h5 className="font-medium mb-2 text-sm text-amber-300">Attributes</h5>
+            {Array.isArray(selectedGuide.attributes) && (
+              <ul className="space-y-2">
+                {selectedGuide.attributes.map((attr, i) => (
+                  <li key={i} className="flex items-center gap-2 text-xs text-amber-100">
+                    <span className="w-1.5 h-1.5 bg-amber-400/80 rounded-full"></span>
+                    <span>{attr}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10">
-                  <h5 className="font-medium mb-2 text-sm">Attributes</h5>
-                  <ul className="space-y-2">
-                    {selectedGuide.attributes.map((attr, i) => (
-                      <li key={i} className="flex items-center gap-2 text-xs">
-                        <span className="w-1.5 h-1.5 bg-amber-400/50 rounded-full"></span>
-                        <span>{attr}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10">
-                  <h5 className="font-medium mb-2  text-sm">Solves problems</h5>
-                  <ul className="space-y-2">
-                    {selectedGuide.problems.map((prob, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs">
-                        <span className="w-1.5 h-1.5 bg-amber-400/10 rounded-full mt-1"></span>
-                        <span>{prob}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 mb-4">
-                <h5 className="font-medium mb-2  text-sm">How to make contact</h5>
-                <p className="text-xs mb-2">
-                  To connect with {selectedGuide.name}, find a quiet place where no one will disturb you. Close your eyes, take a few deep breaths, and imagine a bright light surrounding your body.
-                </p>
-                <p className="text-xs">
-                  Say the name {selectedGuide.name} three times in your mind, focusing on the problem you need help with. Feel the guide's energy connecting with yours.
-                </p>
-              </div>
-
-              <div className="flex justify-between">
-                <Button variant="outline" size="sm" onClick={() => setSelectedGuide(null)}>
-                  Close
-                </Button>
-                <Button size="sm" onClick={() => window.open(selectedGuide.url, "_blank")}>
-                  Start guidance
-                </Button>
-              </div>
-            </div>
+          <div className="bg-black/20 p-4 rounded-lg border border-gray-100/10">
+            <h5 className="font-medium mb-2 text-sm text-amber-300">Solves Problems</h5>
+            <ul className="space-y-2">
+              {selectedGuide.problems?.map((prob, i) => (
+                <li key={i} className="flex items-start gap-2 text-xs text-amber-100">
+                  <span className="w-1.5 h-1.5 bg-amber-400/60 rounded-full mt-1"></span>
+                  <span>{prob}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Symbol and Connection Guide */}
+      <div className="px-6 py-4 bg-black/20 border-t border-gray-100/10">
+        <h5 className="font-medium mb-2 text-sm text-amber-300">Symbol</h5>
+        <p className="text-center text-lg">{selectedGuide.symbol}</p>
+      </div>
+
+      <div className="px-6 py-4 bg-black/30 border-t border-gray-100/10">
+        <h5 className="font-medium mb-2 text-sm text-amber-300">How to Connect</h5>
+        <p className="text-xs text-amber-100 opacity-80">{selectedGuide.how_to_connect}</p>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex justify-between p-6 z-10">
+        <Button variant="outline" size="sm" className="text-amber-200 border-amber-200/50 hover:bg-amber-200/10" onClick={() => setSelectedGuide(null)}>
+          Close
+        </Button>
+        <Button size="sm" className="bg-amber-400 text-black hover:bg-amber-500" onClick={() => window.open(selectedGuide.url, "_blank")}> 
+          Start Guidance
+        </Button>
+      </div>
+      {/* Dynamic Background Glow */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-amber-900 opacity-30 z-[-1]" />
+    </motion.div>
+  </div>
+)}
     </div>
   )
 }
