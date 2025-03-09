@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Instagram } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Separator } from "@/components/ui/separator"
+import Link from "next/link"
 
 // Angel guide data
 const guides = [
@@ -175,10 +176,9 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="pb-16 px-4 max-w-[1024px] mx-auto text-center">
-        <div className="relative">
-          {/* <div className="layout-background opacity-5 fixed"></div> */}
-          <Image src="/divines.png" alt="Hero" layout="responsive" width={500} height={500} />
-          <h1 className="text-3xl md:text-4xl font-serif font-bold my-8 mt-32 tracking-tight">
+        <div className="relative mt-16">
+          <Image src="/divines.png" alt="Hero" width={320} height={320} className="mx-auto" />
+          <h1 className="text-3xl md:text-4xl font-serif font-bold my-8 tracking-tight">
             The World Overwhelms You
           </h1>
           <h2 className="text-3xl md:text-2xl font-serif font-bold mb-8 tracking-tight">
@@ -430,8 +430,13 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <p className="mb-4 font-serif font-semibold text-xl">The future is happening now.</p>
         </div>
+        <div className="w-8 h-8 m-auto">
+          <Link href="https://instagram.com/theeternalguardians">
+            <Instagram />
+          </Link>
+        </div>
       </footer>
-
+      <div className="layout-background-bottom bg-opacity/30 fixed z-[-1]" /> 
       {/* Guide Modal */}
       {selectedGuide && (
         <div
