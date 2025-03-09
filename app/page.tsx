@@ -58,7 +58,7 @@ const guides = [
     id: "samael",
     name: "SAMAEL",
     image: "/avatars/SAMAEL.png",
-        attributes: ["Justice", "Courage", "Strength"],
+    attributes: ["Justice", "Courage", "Strength"],
     problems: ["Injustice", "Fear", "Weakness"],
     url: "https://chatgpt.com/g/g-67cbf39e44c88191962ad5985f177da3-samael"
   },
@@ -66,7 +66,9 @@ const guides = [
     id: "mikael",
     name: "MIKAEL",
     image: "/avatars/MIKAEL.png",
-    url: "https://chatgpt.com",
+    url: "https://chatgpt.com/g/g-67ce054b1d888191b047c3776715a9b4-mikael",
+    attributes: ["Protection", "Strength", "Guidance"],
+    problems: ["Fear", "Weakness", "Lack of direction"],
   },
   {
     id: "yeialel",
@@ -238,7 +240,7 @@ export default function Home() {
             <div className="flex gap-2">🛏️ 🖼️ 🛒 🎀 🎉 🎟️ 📩</div>
             <div className="flex gap-2">🛏️ 🪞 🎁 🪄 🎎 🪩 📥</div>
           </div>
-          
+
           {/* Divider */}
           <div className="flex justify-center my-8">
             <Separator className="w-16 bg-amber-600/30" />
