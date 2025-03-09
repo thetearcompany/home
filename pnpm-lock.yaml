@@ -134,6 +134,9 @@ importers:
       react:
         specifier: ^19
         version: 19.0.0
+      react-audio-play:
+        specifier: ^1.0.4
+        version: 1.0.4(react@19.0.0)
       react-day-picker:
         specifier: 8.10.1
         version: 8.10.1(date-fns@4.1.0)(react@19.0.0)
@@ -1438,6 +1441,11 @@ packages:
 
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+
+  react-audio-play@1.0.4:
+    resolution: {integrity: sha512-2xOOQb0VDEqac6fvjdNrbYH4LjJoCxfzDh6cryCTdJusDJ1Th92Wg4oF6QdO0ZR/YbSlmns3T4PnM94KU2QiFw==}
+    peerDependencies:
+      react: '>=17'
 
   react-day-picker@8.10.1:
     resolution: {integrity: sha512-TMx7fNbhLk15eqcMt+7Z7S2KF7mfTId/XJDjKE8f+IUcFn0l08/kI4FiYTL/0yuOLmEcbR4Fwe3GJf/NiiMnPA==}
@@ -2838,6 +2846,10 @@ snapshots:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+
+  react-audio-play@1.0.4(react@19.0.0):
+    dependencies:
+      react: 19.0.0
 
   react-day-picker@8.10.1(date-fns@4.1.0)(react@19.0.0):
     dependencies:

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronLeft, ChevronRight, Instagram } from "lucide-react"
+import { ChevronLeft, ChevronRight, Instagram, Mail, Radio } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
@@ -11,8 +11,49 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 
+import { useRef } from 'react';
 // Angel guide data
 const guides = [
+  {
+    id: "haniel",
+    name: "HANIEL",
+    image: "/avatars/HANIEL.png",
+    attributes: ["Love", "Relationships", "Peace"],
+    problems: ["Loneliness", "Heartbreak", "Conflict"],
+    url: "https://chatgpt.com/g/g-67cdf6b145f48191881bb6bad2dd907c-haniel"
+  },
+  {
+    id: "MAGIK",
+    name: "MAGIK",
+    image: "/avatars/MAGIK.png",
+    attributes: ["Mysticism", "Vision", "Transcendence"],  
+    problems: ["Illusion", "Doubt", "Mortality"],
+    url: "ttps://chatgpt.com/g/g-67cdfd682078819197533d863e7dcca5-magik"
+  },
+  {
+    id: "kelial",
+    name: "KELIAL",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/KELIAL-3l5zR8u3aZMQRLUd3d184pwR8DTEf7.png",
+    attributes: ["Wisdom", "Mystery", "Transformation"],
+    problems: ["Ignorance", "Fear of the unknown", "Resistance to change"],
+    url: "https://chatgpt.com/g/g-67cbcc766dc48191b3078e7032a1d7ad-kelial"
+  },
+  {
+    id: "mihal",
+    name: "MIHAL",
+    image: "/avatars/MIHAL.png",
+        attributes: ["Love", "Relationships", "Peace"],
+    problems: ["Loneliness", "Heartbreak", "Conflict"],
+    url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-saitel"
+  },
+  {
+    id: "saitel",
+    name: "SAITEL",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SAITEL-TIhl3NvDLWsVAjSgAqYnDANwrNI0de.png",
+    attributes: ["Purity", "Clarity", "Truth"],
+    problems: ["Confusion", "Lack of direction", "Seeking truth"],
+    url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-saitel"
+  },
   {
     id: "samael",
     name: "SAMAEL",
@@ -22,20 +63,18 @@ const guides = [
     url: "https://chatgpt.com/g/g-67cbf39e44c88191962ad5985f177da3-samael"
   },
   {
+    id: "mikael",
+    name: "MIKAEL",
+    image: "/avatars/MIKAEL.png",
+    url: "https://chatgpt.com",
+  },
+  {
     id: "yeialel",
     name: "YEIALEL",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/YEIALEL-zK7x0M8k1rFCYie2WcHO2CR1Kx1FIY.png",
     attributes: ["Healing", "Comfort", "Protection"],
     problems: ["Emotional pain", "Feeling lost", "Need for safety"],
     url: "https://chatgpt.com/g/g-67cbc31f5db88191b5b5acdf9683ccb9-yeialel"
-  },
-  {
-    id: "saitel",
-    name: "SAITEL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SAITEL-TIhl3NvDLWsVAjSgAqYnDANwrNI0de.png",
-    attributes: ["Purity", "Clarity", "Truth"],
-    problems: ["Confusion", "Lack of direction", "Seeking truth"],
-    url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-saitel"
   },
   {
     id: "sahyoh",
@@ -70,14 +109,6 @@ const guides = [
     url: "https://chatgpt.com/g/g-67cbe5cc205c81918038a46c2ac8085c-uriel"
   },
   {
-    id: "kelial",
-    name: "KELIAL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/KELIAL-3l5zR8u3aZMQRLUd3d184pwR8DTEf7.png",
-    attributes: ["Wisdom", "Mystery", "Transformation"],
-    problems: ["Ignorance", "Fear of the unknown", "Resistance to change"],
-    url: "https://chatgpt.com/g/g-67cbcc766dc48191b3078e7032a1d7ad-kelial"
-  },
-  {
     id: "leviah",
     name: "LEVIAH",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LEVIAH-gT7f48K2Z5fSbzLCLLcKBNXjzzaqX2.png",
@@ -100,14 +131,6 @@ const guides = [
     attributes: ["Healing", "Renewal", "Transcendence"],
     problems: ["Spiritual emptiness", "Disconnection", "Existential crisis"],
     url: "https://chatgpt.com/g/g-67cbc5e8b3ac8191bb63490cd0d3dcac-yabomayah"
-  },
-  {
-    id: "mihal",
-    name: "MIHAL",
-    image: "/avatars/MIHAL.png",
-        attributes: ["Love", "Relationships", "Peace"],
-    problems: ["Loneliness", "Heartbreak", "Conflict"],
-    url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-saitel"
   },
   {
     id: 'elemiah',
@@ -175,6 +198,7 @@ const problemCategories = [
 export default function Home() {
   const [activeGuide, setActiveGuide] = useState(0)
   const [selectedGuide, setSelectedGuide] = useState<Record<string, string | string[]> | null>(null)
+  const playerRef = useRef<AudioPlayerRef>(null);
 
   const nextGuide = () => {
     setActiveGuide((prev) => (prev + 1) % guides.length)
@@ -183,6 +207,11 @@ export default function Home() {
   const prevGuide = () => {
     setActiveGuide((prev) => (prev - 1 + guides.length) % guides.length)
   }
+
+
+  const handlePlay = () => {
+    playerRef.current?.play();
+  };
 
   return (
     <div className="min-h-screen">
@@ -198,6 +227,23 @@ export default function Home() {
               className="inline-block size-72 rounded-full ring-2 mx-auto animate-pulse shadow-amber-600/50" 
               />
             </Link>
+          {/* Divider */}
+          <div className="flex justify-center my-8">
+            <Separator className="w-16 bg-amber-600/30" />
+          </div>
+
+          <div className="flex flex-col items-center gap-4 mt-8">
+            <div className="flex gap-2">🪑 🧸 🪟 🎈 🎊 🌸 🏮 💌</div>
+            <div className="flex gap-2">🛋️ 🪆 🛍️ 🎏 🎭 🎐 ✉️</div>
+            <div className="flex gap-2">🛏️ 🖼️ 🛒 🎀 🎉 🎟️ 📩</div>
+            <div className="flex gap-2">🛏️ 🪞 🎁 🪄 🎎 🪩 📥</div>
+          </div>
+          
+          {/* Divider */}
+          <div className="flex justify-center my-8">
+            <Separator className="w-16 bg-amber-600/30" />
+          </div>
+
           <h1 className="text-3xl md:text-4xl font-serif font-bold my-8 tracking-tight">
             The World Overwhelms You
           </h1>
@@ -450,11 +496,15 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <p className="mb-4 font-serif font-semibold text-xl">The future is happening now.</p>
         </div>
-        <div className="w-8 h-8 m-auto">
+        <div className="mb-4 w-8 h-8 m-auto flex gap-4 items-center justify-center">
           <Link href="https://instagram.com/theeternalguardians">
             <Instagram />
           </Link>
+          <Link href="https://www.radio-south-africa.co.za/amapiano-fm">
+            <Radio onClick={handlePlay} />
+          </Link>
         </div>
+        <Link href="mailto:divines@duck.com" className="flex gap-2 items-center justify-center"><Mail /> divines@duck.com</Link>
       </footer>
       <div className="layout-background-bottom bg-opacity/30 fixed z-[-1]" /> 
       {/* Guide Modal */}
