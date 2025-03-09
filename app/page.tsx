@@ -14,6 +14,14 @@ import Link from "next/link"
 // Angel guide data
 const guides = [
   {
+    id: "samael",
+    name: "SAMAEL",
+    image: "/avatars/SAMAEL.png",
+        attributes: ["Justice", "Courage", "Strength"],
+    problems: ["Injustice", "Fear", "Weakness"],
+    url: "https://chatgpt.com/g/g-67cbf39e44c88191962ad5985f177da3-samael"
+  },
+  {
     id: "yeialel",
     name: "YEIALEL",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/YEIALEL-zK7x0M8k1rFCYie2WcHO2CR1Kx1FIY.png",
@@ -94,29 +102,23 @@ const guides = [
     url: "https://chatgpt.com/g/g-67cbc5e8b3ac8191bb63490cd0d3dcac-yabomayah"
   },
   {
-    id: "samael",
-    name: "SAMAEL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SAMAEL-yt081JVkYUoYZiZiMUOJ6Aqn1qxoBQ.png",
-    attributes: ["Justice", "Courage", "Strength"],
-    problems: ["Injustice", "Fear", "Weakness"],
-    url: "https://chatgpt.com/g/g-67cbf39e44c88191962ad5985f177da3-samael"
-  },
-  {
     id: "mihal",
     name: "MIHAL",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MIHAL-yt081JVkYUoYZiZiMUOJ6Aqn1qxoBQ.png",
-    attributes: ["Love", "Relationships", "Peace"],
+    image: "/avatars/MIHAL.png",
+        attributes: ["Love", "Relationships", "Peace"],
     problems: ["Loneliness", "Heartbreak", "Conflict"],
     url: "https://chatgpt.com/g/g-67cc2b322fd88191a413ee94a865ccd2-saitel"
   },
   {
     id: 'elemiah',
     name: 'ELEMIAH',
+    image: "/avatars/ELEMIAH.png",
     url: 'https://chatgpt.com/g/g-67cdb0ece5d481918047a1b387390f73-elemiah'
   },
   {
     id: 'vehaviah',
     name: 'VEHAVIAH',
+    image: "/avatars/VEHAVIAH.png",
     url: 'https://chatgpt.com/g/g-67cdb3c1c63c81919da83efa8c01c7dc-vehaviah'
   }
 ]
@@ -336,7 +338,7 @@ export default function Home() {
                         />
                       </div>
                       {position === 0 && (
-                        <div className="absolute bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm p-2 text-center">
+                        <div className="absolute bottom-0 left-0 right-0 bg-white/30 backdrop-blur-xs p-2 text-center">
                           <p className="font-medium text-sm">{guide.name}</p>
                         </div>
                       )}
