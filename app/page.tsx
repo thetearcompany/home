@@ -174,41 +174,42 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 px-4 max-w-[1024px] mx-auto text-center">
-        <div className="relative z-[-1]">
-          <div className="layout-background fixed"></div>
-          <h1 className="text-3xl md:text-4xl font-serif font-bold mb-8 tracking-tight">
+      <section className="pb-16 px-4 max-w-[1024px] mx-auto text-center">
+        <div className="relative">
+          <div className="layout-background opacity-20 fixed"></div>
+          <Image src="/divines.png" alt="Hero" layout="responsive" width={500} height={500} />
+          <h1 className="text-3xl md:text-4xl font-serif font-bold my-8 mt-32 tracking-tight">
             The World Overwhelms You
           </h1>
           <h2 className="text-3xl md:text-2xl font-serif font-bold mb-8 tracking-tight">
             You Are Losing Faith in the World
           </h2>
-          <p className="text-lg md:text-xl mb-8 font-light">
+          <p className="text-lg md:text-xl mb-8 font-light opacity-80">
             People leave. Bonds break. Dreams fade. But there is hope.
           </p>
           <div className="grid gap-4 md:grid-cols-2 max-w-3xl mx-auto text-left">
             <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
               <p className=" font-medium mb-2">Love is an illusion.</p>
-              <p className="text-sm">
+              <p className="text-sm opacity-80">
                 Human bonds are getting weaker. Relationships are becoming transactions. But true connections still exist.
               </p>
             </div>
             <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
               <p className="font-medium mb-2">Truth? It doesn't exist.</p>
-              <p className="text-sm">Everyone has their own, and everyone shouts the loudest. Yet, there is a deeper truth to be found.</p>
+              <p className="text-sm opacity-80">Everyone has their own, and everyone shouts the loudest. Yet, there is a deeper truth to be found.</p>
             </div>
             <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
               <p className=" font-medium mb-2">Work? An eternal struggle.</p>
-              <p className="text-sm">You squeeze out your last strength, and still have nothing. But there is a way to find fulfillment.</p>
+              <p className="text-sm opacity-80">You squeeze out your last strength, and still have nothing. But there is a way to find fulfillment.</p>
             </div>
             <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
               <p className=" font-medium mb-2">Health? Diseases.</p>
-              <p className="text-sm">The mind is falling apart. The body starts to refuse to obey. Yet, healing is possible.</p>
+              <p className="text-sm opacity-80">The mind is falling apart. The body starts to refuse to obey. Yet, healing is possible.</p>
             </div>
           </div>
           <div className="mt-8 text-center">
             <p className="text-lg md:text-xl mb-4 font-serif">It's not your fault.</p>
-            <p className="text-base">The world was built to make you believe that. But you can find your way.</p>
+            <p className="text-base opacity-80">The world was built to make you believe that. But you can find your way.</p>
           </div>
         </div>
       </section>
@@ -225,23 +226,23 @@ export default function Home() {
         </h2>
         <div className="grid gap-4 md:grid-cols-3 max-w-3xl mx-auto mb-8">
           <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
-            <p className=" font-medium text-base mb-0">You are not alone.</p>
+            <p className=" font-medium text-base mb-0 opacity-80">You are not alone.</p>
           </div>
           <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
-            <p className=" font-medium text-base mb-0">You don't have to fight alone.</p>
+            <p className=" font-medium text-base mb-0 opacity-80">You don't have to fight alone.</p>
           </div>
           <div className="bg-amber-50/10 p-4 rounded-lg border border-gray-100/10 shadow-sm">
-            <p className=" font-medium text-base mb-0">You don't have to drown in darkness.</p>
+            <p className=" font-medium text-base mb-0 opacity-80">You don't have to drown in darkness.</p>
           </div>
         </div>
-        <p className="text-lg md:text-xl mb-8 font-light">
+        <p className="text-lg md:text-xl mb-8 font-light opacity-80">
           Because there are those who can guide you.
           <br />
           They are not an illusion. They are not a philosophy. They are a force that works when you allow it to work.
         </p>
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 opacity">
           <p className="text-xl md:text-2xl font-serif font-medium mb-4">They are the guides.</p>
-          <p>Each of them solves different problems. Each answers different questions.</p>
+          <p className="opacity-80">Each of them solves different problems. Each answers different questions.</p>
         </div>
         <div className="text-center">
           <p className="text-lg font-medium">Open your eyes. Choose your guide.</p>
@@ -424,7 +425,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-gray-200/10 text-center">
         <div className="max-w-4xl mx-auto">
-          <p className="mb-4 font-serif">This is not the end. This is the beginning.</p>
+          <p className="mb-4 font-serif opacity-80">This is not the end. This is the beginning.</p>
         </div>
         <div className="max-w-4xl mx-auto">
           <p className="mb-4 font-serif font-semibold text-xl">The future is happening now.</p>

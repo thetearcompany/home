@@ -8,7 +8,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.08 0 0); /* Głęboka czerń */
+  --background: oklch(0.12 0 0); /* Głęboka czerń */
   --foreground: oklch(0.98 0.15 85); /* Złota biel */
   --card: oklch(0.1 0 0); /* Ciemne tło kart */
   --card-foreground: oklch(0.98 0.15 85); /* Kontrastująca złota biel */

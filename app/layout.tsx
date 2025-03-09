@@ -1,11 +1,11 @@
 import type React from "react"
 import "@/app/globals.css"
-import { Inter, Playfair_Display } from "next/font/google"
+import { IBM_Plex_Sans, Geist } from "next/font/google"
 
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" })
+const inter = IBM_Plex_Sans({ subsets: ["latin"], variable: "--font-inter", weight: ["300", "400"] })
+const playfair = Geist({ subsets: ["latin"], variable: "--font-playfair" })
 
 export const metadata = {
   title: "Przewodnicy Duchowi - Znajdź swoje światło",
