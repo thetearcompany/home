@@ -176,7 +176,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pb-16 px-4 max-w-[1024px] mx-auto text-center">
         <div className="relative">
-          <div className="layout-background opacity-15 fixed"></div>
+          {/* <div className="layout-background opacity-5 fixed"></div> */}
           <Image src="/divines.png" alt="Hero" layout="responsive" width={500} height={500} />
           <h1 className="text-3xl md:text-4xl font-serif font-bold my-8 mt-32 tracking-tight">
             The World Overwhelms You
