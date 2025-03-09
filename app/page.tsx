@@ -338,7 +338,7 @@ export default function Home() {
                         />
                       </div>
                       {position === 0 && (
-                        <div className="absolute bottom-0 left-0 right-0 bg-white/30 backdrop-blur-xs p-2 text-center">
+                        <div className="absolute bottom-0 left-0 right-0 bg-white/30 backdrop-blur-xl p-2 text-center">
                           <p className="font-medium text-sm">{guide.name}</p>
                         </div>
                       )}
