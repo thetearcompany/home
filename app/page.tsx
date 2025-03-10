@@ -298,7 +298,7 @@ export default function Home() {
 
         {/* Carousel */}
         <Carousel
-        plugins={[Autoplay({ delay: 7777 })]}
+        plugins={[Autoplay({ delay: 19000 })]}
         opts={{ loop: true, align: "center" }}
         setApi={() => emblaApi}
         >
