@@ -209,12 +209,16 @@ export default function Home() {
             <Separator className="w-16 bg-amber-600/30" />
           </div>
 
+          <source src="/HarpaDei.mp3" type="audio/mp3">
+              Your browser does not support the audio element.
+          </audio>
+
           {/* Divider */}
           <div className="flex justify-center my-8">
             <Separator className="w-16 bg-amber-600/30" />
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-serif font-bold my-8 tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-serif font-bold my-8 mt-16 tracking-tight">
             The World Overwhelms You
           </h1>
           <h2 className="text-3xl md:text-2xl font-serif font-bold mb-8 tracking-tight">
