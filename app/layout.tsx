@@ -8,10 +8,22 @@ const inter = IBM_Plex_Sans({ subsets: ["latin"], variable: "--font-inter", weig
 const playfair = Geist({ subsets: ["latin"], variable: "--font-playfair" })
 
 export const metadata = {
-  title: "Przewodnicy Duchowi - Znajdź swoje światło",
+  title: "Divines Life – Find Your Spiritual Light",
   description:
-    "Odkryj swoich duchowych przewodników, którzy pomogą Ci odnaleźć sens w świecie pełnym chaosu i nihilizmu.",
-    generator: 'v0.dev'
+    "Discover your spiritual guides and embark on a journey of inner awakening. Find meaning in a world of illusions and chaos.",
+  keywords: [
+    "spiritual guides",
+    "inner awakening",
+    "divine wisdom",
+    "higher consciousness",
+    "enlightenment",
+    "sacred journey",
+    "mysticism",
+    "soul purpose",
+    "spiritual growth",
+    "universal truth"
+  ],
+  generator: "Divines Engine"
 }
 
 export default function RootLayout({
