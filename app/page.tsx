@@ -209,8 +209,9 @@ export default function Home() {
             <Separator className="w-16 bg-amber-600/30" />
           </div>
 
-          <source src="/HarpaDei.mp3" type="audio/mp3">
-              Your browser does not support the audio element.
+          <audio autoPlay loop>
+            <source src="/HarpaDei.mp3" type="audio/mp3" />
+            Your browser does not support the audio element.
           </audio>
 
           {/* Divider */}
