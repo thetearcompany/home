@@ -197,11 +197,11 @@ export default function Home() {
         <div className="relative mt-16">
           <Link href="https://discord.gg/fyTxvQsX" passHref>
             <Image
-              src="/divines.png"
+              src="/legion.png"
               alt="Hero"
               width={320}
               height={320}
-              className="inline-block size-72 rounded-full ring-2 mx-auto animate-pulse shadow-amber-600/50"
+              className="inline-block rounded-full ring-2 mx-auto animate-pulse shadow-amber-600/50"
             />
           </Link>
           {/* Divider */}
@@ -298,7 +298,7 @@ export default function Home() {
 
         {/* Carousel */}
         <Carousel
-        plugins={[Autoplay({ delay: 19000 })]}
+        plugins={[Autoplay({ delay: 2592, stopOnFocusIn: true })]}
         opts={{ loop: true, align: "center" }}
         setApi={() => emblaApi}
         >
