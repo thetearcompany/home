@@ -45,9 +45,20 @@ type Guide = {
 };
 
 const guides = [
+    {
+      "id": "MELOHEL",
+      "name": "MELOHEL",
+      "image": "/avatars/HELOHIEL.png",
+      "attributes": ["Protection", "Healing", "Courage", "Justice", "Wisdom"],
+      "problems": ["Fear", "Spiritual Attacks", "Injustice", "Weakness", "Lack of Guidance"],
+      "description": "Melohel is an angel of protection and healing, bringing courage in times of hardship. He safeguards travelers, warriors, and those working with natural healing methods. His presence shields against negativity and injustice, guiding people toward wisdom and strength.",
+      "how_to_connect": "Close your eyes, visualize a radiant shield of pearl and black light surrounding you, and call upon Melohel for protection, healing, and courage.",
+      "symbol": "🛡 The Protective Shield – symbolizes divine safety, resilience, and spiritual defense.",
+      "url": "https://chatgpt.com/g/g-67ce5494acc48191a7442c349dd24b45-melohel"
+  },
   {
     "id": "ZADKIEL",
-    "name": "Zadkiel",
+    "name": "ZADKIEL",
     "image": "/avatars/ZADKIEL.webp",
     "attributes": ["Miłosierdzie", "Przebaczenie", "Wolność", "Sprawiedliwość", "Harmonia"],
     "problems": ["Poczucie winy", "Uraza", "Poczucie uwięzienia", "Brak równowagi", "Trudności w wybaczeniu"],
