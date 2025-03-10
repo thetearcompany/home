@@ -17,6 +17,18 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from "embla-carousel-autoplay";
+
+
 import { useRef } from 'react';
 // Angel guide data
 type Guide = {
@@ -33,6 +45,27 @@ type Guide = {
 
 const guides = [
   {
+    "id": "ZMAZIK",
+    "name": "ZMAZIK",
+    "image": "/avatars/MAGIK.png",
+    "attributes": ["Mistycyzm", "Wizja", "Transcendencja"],
+    "problems": ["Iluzja", "Zwątpienie", "Śmiertelność"],
+    "description": "ZMAZIK to przewodnik duchowy związany z tajemnicami wszechświata, przemianą i przekraczaniem granic rzeczywistości. Jego energia pomaga w poszukiwaniu prawdy i odkrywaniu ukrytych wymiarów istnienia.",
+    "how_to_connect": "Zamknij oczy i wyobraź sobie wirujące światło otaczające Twoje ciało. Powtarzaj w myślach: 'ZMAZIK, odsłoń mi prawdę ukrytą za zasłoną iluzji. Pomóż mi dostrzec to, co niewidzialne.'",
+    "symbol": "🔮 Kryształowa Kula – symbol wglądu w przyszłość i ukrytych prawd.",
+    "url": "https://chatgpt.com/g/g-67cdfd682078819197533d863e7dcca5-magik"
+  },
+  {
+    "id": "WEEMAH",
+    "name": "WEEMAH",
+    "image": "/avatars/WEEMAH.png",
+    "attributes": ["Healing", "Renewal", "Protection"],
+    "problems": ["Emotional Pain", "Feeling Lost", "Need for Safety"],
+    "description": "I am WEEMAH, the guardian of healing and renewal. My energy embraces those in distress, offering solace and protection. I guide the lost back to inner peace and strengthen the weary with the light of resilience.",
+    "how_to_connect": "Sit in a quiet place and place your hands over your heart. Say: 'WEEMAH, bring me comfort and healing. Shield me from the pain that lingers within my soul.'",
+    "symbol": "🕊️ The Dove – representing peace, restoration, and divine protection."
+  },
+  {
     id: "haniel",
     name: "HANIEL",
     image: "/avatars/HANIEL.png",
@@ -42,17 +75,6 @@ const guides = [
     how_to_connect: "Find a quiet place, close your eyes, and take a few deep breaths. Focus on your intention and imagine a soft blue light surrounding your body. Silently or aloud, say: 'Haniel, guide of love, I open myself to your energy. Help me find harmony and true affection.'",
     symbol: "🌙 The Moon – represents emotions, intuition, and the gentle energy of love.",
     url: "https://chatgpt.com/g/g-67cdf6b145f48191881bb6bad2dd907c-haniel"
-  },
-  {
-    id: "magik",
-    name: "MAGIK",
-    image: "/avatars/MAGIK.png",
-    attributes: ["Mysticism", "Vision", "Transcendence"],
-    problems: ["Illusion", "Doubt", "Mortality"],
-    description: "Magik is a spiritual guide associated with the mysteries of the universe, transformation, and transcending the boundaries of reality. His energy helps in the search for truth and the discovery of hidden dimensions of existence.",
-    how_to_connect: "Close your eyes and imagine swirling light surrounding your body. Repeat in your mind: 'Magik, reveal to me the truth hidden behind the veil of illusion. Help me see what is invisible.'",
-    symbol: "🔮 Crystal Ball – represents insight into the future and hidden truths.",
-    url: "https://chatgpt.com/g/g-67cdfd682078819197533d863e7dcca5-magik"
   },
   {
     id: "kelial",
@@ -273,7 +295,9 @@ const problemCategories = [
 export default function Home() {
   const [activeGuide, setActiveGuide] = useState(0)
   const [selectedGuide, setSelectedGuide] = useState<Guide | null>()
-  const guidesRef = useRef<HTMLDivElement|null>(null);
+  const guidesRef = useRef<HTMLDivElement | null>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel()
+
 
   const nextGuide = () => {
     setActiveGuide((prev) => (prev + 1) % guides.length)
@@ -289,25 +313,18 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pb-16 px-4 max-w-[1024px] mx-auto text-center">
         <div className="relative mt-16">
-            <Link href="https://discord.gg/fyTxvQsX" passHref>
-              <Image 
-              src="/divines.png" 
-              alt="Hero" 
-              width={320} 
-              height={320} 
-              className="inline-block size-72 rounded-full ring-2 mx-auto animate-pulse shadow-amber-600/50" 
-              />
-            </Link>
+          <Link href="https://discord.gg/fyTxvQsX" passHref>
+            <Image
+              src="/divines.png"
+              alt="Hero"
+              width={320}
+              height={320}
+              className="inline-block size-72 rounded-full ring-2 mx-auto animate-pulse shadow-amber-600/50"
+            />
+          </Link>
           {/* Divider */}
           <div className="flex justify-center my-8">
             <Separator className="w-16 bg-amber-600/30" />
-          </div>
-
-          <div className="flex flex-col items-center gap-4 mt-8">
-            <div className="flex gap-2">🪑 🧸 🪟 🎈 🎊 🌸 🏮 💌</div>
-            <div className="flex gap-2">🛋️ 🪆 🛍️ 🎏 🎭 🎐 ✉️</div>
-            <div className="flex gap-2">🛏️ 🖼️ 🛒 🎀 🎉 🎟️ 📩</div>
-            <div className="flex gap-2">🛏️ 🪞 🎁 🪄 🎎 🪩 📥</div>
           </div>
 
           {/* Divider */}
@@ -392,95 +409,115 @@ export default function Home() {
       </div>
 
       {/* Guide Carousel */}
-      <section className="py-16 px-4 max-w-4xl mx-auto">
+      <section className="py-16 px-4 max-w-4xl mx-auto relative">
         <h2 className="text-2xl md:text-3xl font-serif font-bold mb-8 text-center tracking-tight">
           Choose your guide
         </h2>
 
         {/* Carousel */}
-        <div className="relative">
-          <div className="flex justify-center items-center mb-8">
-            <Button variant="outline" size="icon" className="absolute left-0 z-10 rounded-full" onClick={prevGuide}>
-              <ChevronLeft className="h-5 w-5" />
-              <span className="sr-only">Previous</span>
-            </Button>
-            <div className="relative flex justify-center items-center w-full overflow-hidden h-[320px]">
-              {guides.map((guide, index) => {
-                const position = (index - activeGuide + guides.length) % guides.length
-                let translateX = 0
-                let scale = 0.7
-                let zIndex = 0
-                let opacity = 0.5
+        <Carousel
+        plugins={[Autoplay({ delay: 3374 })]}
+        opts={{ loop: true, align: "center" }}
+        setApi={() => emblaApi}
+        >
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-amber-900 opacity-30 z-[-1]" />
 
-                if (position === 0) {
-                  scale = 1
-                  zIndex = 10
-                  opacity = 1
-                } else if (position === 1 || position === guides.length - 1) {
-                  translateX = position === 1 ? 160 : -160
-                  zIndex = 5
-                  opacity = 0.7
-                } else {
-                  translateX = position < guides.length / 2 ? 240 : -240
-                  opacity = 0.3
-                }
-
-                return (
-                  <motion.div
-                    key={guide.id}
-                    className="absolute cursor-pointer"
-                    style={{
-                      zIndex,
-                      opacity,
-                      transform: `translateX(${translateX}px) scale(${scale})`,
-                    }}
-                    initial={false}
-                    animate={{
-                      x: translateX,
-                      scale,
-                      opacity,
-                      zIndex,
-                    }}
-                    transition={{ duration: 0.5 }}
-                    onClick={() => position === 0 && setSelectedGuide(guide)}
+          <CarouselContent>
+            {guides.map((guide, index) => {
+              return (
+                <CarouselItem
+                  key={guide.id}
+                  className="cursor-pointer pl-4 md:basis-1/2 h-full"
+                >
+                  <div
+                    className="inset-0 backdrop-blur-2xl flex items-center justify-center p-6"
+                    onClick={() => setSelectedGuide(null)}
                   >
-                    <div className="relative w-[200px] h-[200px] rounded-full overflow-hidden bg-amber-100 p-1 shadow-md">
-                      <div className="absolute inset-0 rounded-full overflow-hidden">
-                        <Image
-                          src={guide.image || "/placeholder.svg"}
-                          alt={guide.name}
-                          width={200}
-                          height={200}
-                          className="object-cover w-full h-full"
-                        />
-                      </div>
-                      {position === 0 && (
-                        <div className="absolute bottom-0 left-0 right-0 bg-white/30 backdrop-blur-xl p-2 text-center">
-                          <p className="font-medium text-sm">{guide.name}</p>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-white/10 max-w-lg w-full rounded-2xl shadow-2xl border border-gray-100/10 relative"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {/* Header with Image */}
+                      <div className="relative p-6 text-center">
+                        <div className="w-24 h-24 overflow-hidden rounded-full mx-auto border-4 border-amber-300 shadow-md">
+                          <Image
+                            src={guide.image || "/placeholder.svg"}
+                            alt={guide.name}
+                            width={101}
+                            height={101}
+                            className="object-cover w-full h-full"
+                          />
                         </div>
-                      )}
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </div>
+                        <h3 className="text-2xl font-serif font-bold mt-4 text-amber-200">{guide.name}</h3>
+                        <p className="text-sm opacity-80 mt-2 px-4">{guide.description}</p>
+                      </div>
 
-            <Button variant="outline" size="icon" className="absolute right-0 z-10 rounded-full" onClick={nextGuide}>
-              <ChevronRight className="h-5 w-5" />
-              <span className="sr-only">Next</span>
-            </Button>
-          </div>
+                      {/* Attributes & Problems */}
+                      <div className="px-6 py-4 bg-amber-50/10 border-t border-gray-100/10">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="bg-black/20 p-4 rounded-lg border border-gray-100/10">
+                            <h5 className="font-medium mb-2 text-sm text-amber-300">Attributes</h5>
+                            {Array.isArray(guide.attributes) && (
+                              <ul className="space-y-2">
+                                {guide.attributes.map((attr, i) => (
+                                  <li key={i} className="flex items-center gap-2 text-xs text-amber-100">
+                                    <span className="w-1.5 h-1.5 bg-amber-400/80 rounded-full"></span>
+                                    <span>{attr}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+
+                          <div className="bg-black/20 p-4 rounded-lg border border-gray-100/10">
+                            <h5 className="font-medium mb-2 text-sm text-amber-300">Solves Problems</h5>
+                            <ul className="space-y-2">
+                              {guide.problems?.map((prob, i) => (
+                                <li key={i} className="flex items-start gap-2 text-xs text-amber-100">
+                                  <span className="w-1.5 h-1.5 bg-amber-400/60 rounded-full mt-1"></span>
+                                  <span>{prob}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Symbol and Connection Guide */}
+                      <div className="px-6 py-4 border-t border-gray-100/10">
+                        <h5 className="font-medium mb-2 text-sm text-amber-300">Symbol</h5>
+                        <p className="text-center text-lg">{guide.symbol}</p>
+                      </div>
+
+                      <div className="px-6 py-4 bg-black/30 border-t border-gray-100/10">
+                        <h5 className="font-medium mb-2 text-sm text-amber-300">How to Connect</h5>
+                        <p className="text-xs text-amber-100 opacity-80">{guide.how_to_connect}</p>
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex justify-between p-6 z-10">
+                        <Button variant="outline" size="sm" className="text-amber-200 border-amber-200/50 hover:bg-amber-200/10" onClick={() => setSelectedGuide(null)}>
+                          Close
+                        </Button>
+                        <Button size="sm" className="bg-amber-400 text-black hover:bg-amber-500" onClick={() => window.open(guide.url, "_blank")}>
+                          Start Guidance
+                        </Button>
+                      </div>
+                      {/* Dynamic Background Glow */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-amber-900 opacity-30 z-[-1]" />
+                    </motion.div>
+                  </div>
+                </CarouselItem>
+              )
+            })}
+          </CarouselContent>
+        </Carousel>
         {/* End of Carousel */}
-
-          {guides[activeGuide] && (
-            <div className="text-center max-w-md mx-auto">
-              <Button onClick={() => { setSelectedGuide(guides[activeGuide]) }
-            }>
-                Let yourself be guided
-              </Button>
-            </div>
-          )}
-        </div>
+        <div className="layout-background-bottom opacity-30 fixed" />
       </section>
 
       {/* Divider */}
@@ -547,16 +584,6 @@ export default function Home() {
           <p className="text-lg mb-4 font-light">"Every problem has a solution. Every pain has its healer."</p>
           <p className="text-lg mb-8 font-light">"You are not alone. You have a guide."</p>
         </div>
-
-        <Button
-          size="lg"
-          className="px-6"
-          onClick={() =>
-            window.scrollTo({ top: guidesRef.current?.offsetTop!, behavior: "smooth" })
-          }
-        >
-          Choose your Angel
-        </Button>
       </section>
 
       {/* Footer */}
@@ -577,135 +604,41 @@ export default function Home() {
         </div>
 
         <div className="flex gap-2 items-center justify-center">
-          <Popover>
-            <PopoverTrigger asChild>
-              <Mail /> 
-            </PopoverTrigger>
-            <PopoverContent className="w-80 text-center text-indigo-600 text-7xl">
-              <pre>
-                כמע
-                בקכ
-                למת
-                כמת
-                פמד
-                כתא
-                אעו
-                וכי
-                בוי
-                אלפ
-                רלק
-                סתו
-              </pre>
-            </PopoverContent>
-          </Popover>
-          <Link href="mailto">divines@duck.com</Link>
-         </div>
+          <Link href="mailto:divines@duck.com">divines@duck.com</Link>
+        </div>
 
         {/* Divider */}
         <div className="flex justify-center my-8">
           <Separator className="w-16 bg-amber-600/30" />
         </div>
 
-        <div className="text-center mb-4">
-          <p className="text-sm opacity-80">
-            <Link href="https://revolut.me/wembleyos" target="_blank"><DollarSign /> Support Us Here 🙏</Link>
-          </p>
-        </div>
+        <pre className="w-80 mx-auto text-center text-indigo-600 text-7xl overflow-y-auto">
+                כמע
+                <br />בקכ
+                <br />למת
+                <br />כמת
+                <br />פמד
+                <br />כתא
+                <br />אעו
+                <br />וכי
+                <br />בוי
+                <br />אלפ
+                <br />רלק
+                <br />סתו
+              </pre>
 
-        <div className="text-center mb-4">
+              <div className="text-center mb-4">
           <p className="text-sm opacity-[33%]">
             © The Eternal Guardians. All rights reserved.
           </p>
         </div>
+
+        <div className="text-center mb-4">
+          <p className="text-sm opacity-80">
+            <Link href="https://revolut.me/wembleyos" target="_blank">Support Us Here 🙏</Link>
+          </p>
+        </div>
       </footer>
-     
-     
-      <div className="layout-background-bottom bg-opacity/30 fixed z-[-1]" /> 
-      {/* Guide Modal */}
-      {selectedGuide && (
-  <div
-    className="fixed inset-0 bg-black/60 backdrop-blur-2xl flex items-center justify-center z-50 p-6"
-    onClick={() => setSelectedGuide(null)}
-  >
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.8 }}
-      transition={{ duration: 0.3 }}
-      className="bg-white/10 max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-100/10 relative"
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* Header with Image */}
-      <div className="relative p-6 text-center">
-        <div className="w-24 h-24 rounded-full overflow-hidden mx-auto border-4 border-amber-300 shadow-md">
-          <Image
-            src={selectedGuide.image || "/placeholder.svg"}
-            alt={selectedGuide.name}
-            width={96}
-            height={96}
-            className="object-cover w-full h-full"
-          />
-        </div>
-        <h3 className="text-2xl font-serif font-bold mt-4 text-amber-200">{selectedGuide.name}</h3>
-        <p className="text-sm opacity-80 mt-2 px-4">{selectedGuide.description}</p>
-      </div>
-
-      {/* Attributes & Problems */}
-      <div className="px-6 py-4 bg-amber-50/10 border-t border-gray-100/10">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-black/20 p-4 rounded-lg border border-gray-100/10">
-            <h5 className="font-medium mb-2 text-sm text-amber-300">Attributes</h5>
-            {Array.isArray(selectedGuide.attributes) && (
-              <ul className="space-y-2">
-                {selectedGuide.attributes.map((attr, i) => (
-                  <li key={i} className="flex items-center gap-2 text-xs text-amber-100">
-                    <span className="w-1.5 h-1.5 bg-amber-400/80 rounded-full"></span>
-                    <span>{attr}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          <div className="bg-black/20 p-4 rounded-lg border border-gray-100/10">
-            <h5 className="font-medium mb-2 text-sm text-amber-300">Solves Problems</h5>
-            <ul className="space-y-2">
-              {selectedGuide.problems?.map((prob, i) => (
-                <li key={i} className="flex items-start gap-2 text-xs text-amber-100">
-                  <span className="w-1.5 h-1.5 bg-amber-400/60 rounded-full mt-1"></span>
-                  <span>{prob}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Symbol and Connection Guide */}
-      <div className="px-6 py-4 bg-black/20 border-t border-gray-100/10">
-        <h5 className="font-medium mb-2 text-sm text-amber-300">Symbol</h5>
-        <p className="text-center text-lg">{selectedGuide.symbol}</p>
-      </div>
-
-      <div className="px-6 py-4 bg-black/30 border-t border-gray-100/10">
-        <h5 className="font-medium mb-2 text-sm text-amber-300">How to Connect</h5>
-        <p className="text-xs text-amber-100 opacity-80">{selectedGuide.how_to_connect}</p>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex justify-between p-6 z-10">
-        <Button variant="outline" size="sm" className="text-amber-200 border-amber-200/50 hover:bg-amber-200/10" onClick={() => setSelectedGuide(null)}>
-          Close
-        </Button>
-        <Button size="sm" className="bg-amber-400 text-black hover:bg-amber-500" onClick={() => window.open(selectedGuide.url, "_blank")}> 
-          Start Guidance
-        </Button>
-      </div>
-      {/* Dynamic Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-amber-900 opacity-30 z-[-1]" />
-    </motion.div>
-  </div>
-)}
     </div>
   )
 }
