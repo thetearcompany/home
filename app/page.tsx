@@ -30,6 +30,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 
 import { useRef } from 'react';
+import { url } from "inspector"
 // Angel guide data
 type Guide = {
   id: string;
@@ -45,6 +46,28 @@ type Guide = {
 
 const guides = [
   {
+    "id": "ZADKIEL",
+    "name": "Zadkiel",
+    "image": "/avatars/ZADKIEL.webp",
+    "attributes": ["Miłosierdzie", "Przebaczenie", "Wolność", "Sprawiedliwość", "Harmonia"],
+    "problems": ["Poczucie winy", "Uraza", "Poczucie uwięzienia", "Brak równowagi", "Trudności w wybaczeniu"],
+    "description": "Zadkiel to anioł miłosierdzia, przebaczenia i duchowego wyzwolenia. Pomaga uwolnić się od poczucia winy, urazy i negatywnych emocji, prowadząc do wewnętrznego spokoju i harmonii.",
+    "how_to_connect": "Zamknij oczy, wyobraź sobie fioletowy płomień i poproś Zadkiela o pomoc w uwolnieniu się od winy, urazy i odnalezieniu wewnętrznego pokoju.",
+    "symbol": "🔥 Fioletowy Płomień – symbolizuje transformację, przebaczenie i duchową alchemię.",
+    "url": "https://chatgpt.com/g/g-67ce5494acc48191a7442c349dd24b45-zadkiel"
+  },  
+  {
+    "id": "HEHIHIEL",
+    "name": "HEHIHIEL",
+    "image": "/avatars/HEHIHIEL.png",
+    "attributes": ["Truth", "Power of Words", "Protection from Deception"],
+    "problems": ["Lies and Deception", "Lack of Clarity in Life Mission", "Manipulation and Ill Intentions"],
+    "description": "Hehihiel is the angel of Beauty and Truth. His mission is to purify words, minds, and hearts. He brings clarity, the power of eloquent speech, and protection against deception and manipulation. He supports those who seek their spiritual path and wish to uncover the truth hidden beneath illusions.",
+    "how_to_connect": "Visualize a golden-black light surrounding you like a shield. Speak your intention out loud, asking Hehihiel for clarity of thought, the power of truth, and protection from deceitful people.",
+    "symbol": "🛡️ Shield of Truth – symbolizes protection from falsehood and the power of words as a tool of truth.",
+    "url": "https://chatgpt.com/g/g-67ce4cce7dc481919d5ee0bd7ad97968-hehihiel"
+  },
+  {
     "id": "ZMAZIK",
     "name": "ZMAZIK",
     "image": "/avatars/MAGIK.png",
@@ -53,7 +76,7 @@ const guides = [
     "description": "Zmazik guides through universal mysteries, transformation, and crossing the boundaries of reality. His energy supports truth-seekers in uncovering hidden dimensions of existence.",
     "how_to_connect": "Close your eyes, visualize spinning lights, and ask Zmazik to guide you beyond the known reality, towards truth and higher understanding.",
     "symbol": "🔮 Crystal Ball – symbolizes insight, truth, and revelation.",
-    "url": "https://chatgpt.com/g/g-67cdfd682078819197533d863e7dcca5-magik"
+    "url": "https://chatgpt.com/g/g-67cdfd682078819197533d863e7dcca5-zmazik"
   },
   {
     "id": "WEEMAH",
@@ -64,7 +87,7 @@ const guides = [
     "description": "Weemah reveals hidden patterns in thought and language, bringing harmony from chaos. He is the guardian of clarity, coherence, and deeper understanding.",
     "how_to_connect": "Visualize your thoughts as rhythmic waves. Ask Weemah to reveal hidden patterns and bring clarity and harmony to your thoughts.",
     "symbol": "🌀 Spiral – symbolizes the hidden order and harmony within apparent chaos.",
-    "url": "https://chatgpt.com/g/g-67cdfd682078819197533d863e7dcca5-weemah"
+    "url": "https://chatgpt.com/g/g-67cb2b34b1f88191b5bab300c881becd-weemah"
   },
   {
     "id": "HANIEL",
